@@ -1,6 +1,6 @@
 # Thirdweb Unity WebGL Example
 
-In the WebGL game, hit `ESC` and click on the last button, `Button` which would fetch data from the blockchain using our Unity SDK.
+In the WebGL game, hit `ESC` and click on the last button, `Test SDK` which would fetch data from the blockchain using our Unity SDK. Look at your website console log for the request and responses
 
 ## In the Unity:
 1. Install thirdweb sdk unitypackage. https://github.com/nftlabs/unity-webgl-sdk/releases
