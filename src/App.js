@@ -1,23 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Unity, { UnityContext } from "react-unity-webgl";
+import { useEffect, useRef } from "react";
+import { ThirdwebBridgeSDK } from "@3rdweb/unity-bridge";
+
+const unityContext = new UnityContext({
+  loaderUrl: "unity/build.loader.js",
+  dataUrl: "unity/build.data",
+  frameworkUrl: "unity/build.framework.js",
+  codeUrl: "unity/build.wasm",
+});
 
 function App() {
+  const sdk = useRef(
+    new ThirdwebBridgeSDK("https://rpc-mumbai.maticvigil.com")
+  );
+
+  // setting up a communication channel between the unity and the sdk
+  useEffect(function () {
+    unityContext.on("canvas", function (canvas) {
+      window
+        .createUnityInstance(canvas.current, unityContext.unityConfig)
+        .then((unityInstance) => {
+          window.unityInstance = unityInstance;
+        });
+    });
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <p>Hello World!</p>
+      <Unity
+        unityContext={unityContext}
+        style={{ width: "80vw", height: "80vh" }}
+      />
     </div>
   );
 }
