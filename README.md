@@ -4,20 +4,24 @@ In the WebGL game, hit `ESC` and click on the last button, `Button` which would 
 
 ## In the Unity:
 1. Install thirdweb sdk unitypackage. https://github.com/nftlabs/unity-webgl-sdk/releases
-2. Add `thirdweb` prefab into the scene.
-3. Add a `thirdweb` tag on the prefab, so that it can be easily reference throughout the GameObject.
+2. Add `thirdweb` prefab into the scene. <br/>
+![image](https://user-images.githubusercontent.com/2171134/150072027-587fa20d-de18-4059-83da-b22f9e52a282.png)
+3. Add a `thirdweb` tag on the prefab, so that it can be easily reference throughout the GameObject. <br/>
+![image](https://user-images.githubusercontent.com/2171134/150071935-926c8f43-e6a7-499f-9d2b-a6309b9cc9c8.png)
 4. On UI button click function script, you can interact with the sdk by:
 ```c#
-// access the thirdweb sdk component however your project is setup!
-Thirdweb.SDK sdk = GameObject.FindWithTag("thirdweb").GetComponent<Thirdweb.SDK>();
-if (sdk == null) {
-  throw new Exception("SDK is not initialized");
-}
+public async void OnTestSDKFunctionCallback() {
+  // access the thirdweb sdk component however your project is setup!
+  Thirdweb.SDK sdk = GameObject.FindWithTag("thirdweb").GetComponent<Thirdweb.SDK>();
+  if (sdk == null) {
+    throw new Exception("SDK is not initialized");
+  }
 
-var nfts = await sdk.GetNFT("0x025b435B5ba354c9d0C8772cc36aDEE3957f2A6D").GetAllWithOwner();
-foreach (var n in nfts)
-{
-  Debug.LogFormat("NFT: {0} {1} {2} {3}", n.owner, n.metadata.name, n.metadata.description, n.metadata.image);
+  var nfts = await sdk.GetNFT("0x025b435B5ba354c9d0C8772cc36aDEE3957f2A6D").GetAllWithOwner();
+  foreach (var n in nfts)
+  {
+    Debug.LogFormat("NFT: {0} {1} {2} {3}", n.owner, n.metadata.name, n.metadata.description, n.metadata.image);
+  }
 }
 ```
 
