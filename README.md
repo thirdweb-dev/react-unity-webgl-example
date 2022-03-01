@@ -3,7 +3,7 @@
 In the WebGL game, hit `ESC` and click on the last button, `Test SDK` which would fetch data from the blockchain using our Unity SDK. Look at your website console log for the request and responses
 
 ## In the Unity:
-1. Install thirdweb sdk unitypackage. https://github.com/nftlabs/unity-webgl-sdk/releases
+1. Install thirdweb sdk unitypackage. https://github.com/thirdweb-dev/unity-webgl-sdk/releases
 2. Add `thirdweb` prefab into the scene. <br/>
 ![image](https://user-images.githubusercontent.com/2171134/150072027-587fa20d-de18-4059-83da-b22f9e52a282.png)
 3. Add a `thirdweb` tag on the prefab, so that it can be easily reference throughout the GameObject. <br/>
